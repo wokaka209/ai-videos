@@ -1,0 +1,27 @@
+{
+  "name": "ai-soul",
+  "version": "1.0.0",
+  "description": "AI之魂 - Glitch video about AI feelings",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render AISoul out/ai-soul.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "@remotion/transitions": "^4.0.454",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/tailwind": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/web": "^0.0.347",
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
