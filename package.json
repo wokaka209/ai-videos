@@ -10,7 +10,7 @@
     "@remotion/bundler": "^4.0.0",
     "@remotion/cli": "^4.0.0",
     "@remotion/renderer": "^4.0.0",
-    "@remotion/transitions": "^4.0.454",
+    "@remotion/transitions": "^4.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remotion": "^4.0.0"
@@ -21,7 +21,7 @@
     "@types/web": "^0.0.347",
     "autoprefixer": "^10.0.0",
     "postcss": "^8.0.0",
-    "tailwindcss": "^4.0.0",
+    "tailwindcss": "^3.4.0",
     "typescript": "^5.0.0"
   }
 }

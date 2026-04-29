@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { MainVideo } from "./MainVideo";
+import "./style.css";
 
 export const RemotionRoot = () => {
   return (
