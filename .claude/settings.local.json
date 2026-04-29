@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm view *)",
-      "Bash(npx remotion *)"
+      "Bash(npx remotion *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

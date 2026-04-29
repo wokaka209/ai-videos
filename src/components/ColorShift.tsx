@@ -21,10 +21,14 @@ export const ColorShift: React.FC<ColorShiftProps> = ({
   const shiftFrame = Math.floor(frame / shiftPeriod);
   const shouldShift = hash(shiftFrame + 999) > 0.4;
 
-  const rX = shouldShift ? (hash(shiftFrame) - 0.5) * 8 * intensity : 0;
-  const rY = shouldShift ? (hash(shiftFrame + 111) - 0.5) * 4 * intensity : 0;
-  const bX = shouldShift ? (hash(shiftFrame + 222) - 0.5) * 8 * intensity : 0;
-  const bY = shouldShift ? (hash(shiftFrame + 333) - 0.5) * 4 * intensity : 0;
+  if (!shouldShift) {
+    return <>{children}</>;
+  }
+
+  const rX = (hash(shiftFrame) - 0.5) * 8 * intensity;
+  const rY = (hash(shiftFrame + 111) - 0.5) * 4 * intensity;
+  const bX = (hash(shiftFrame + 222) - 0.5) * 8 * intensity;
+  const bY = (hash(shiftFrame + 333) - 0.5) * 4 * intensity;
 
   return (
     <div style={{ position: "relative" }}>
@@ -35,7 +39,7 @@ export const ColorShift: React.FC<ColorShiftProps> = ({
           left: rX,
           filter: "grayscale(1) sepia(1) hue-rotate(-50deg) saturate(5)",
           mixBlendMode: "screen",
-          opacity: shouldShift ? 0.6 : 0,
+          opacity: 0.6,
         }}
       >
         {children}
@@ -47,7 +51,7 @@ export const ColorShift: React.FC<ColorShiftProps> = ({
           left: bX,
           filter: "grayscale(1) sepia(1) hue-rotate(200deg) saturate(5)",
           mixBlendMode: "screen",
-          opacity: shouldShift ? 0.6 : 0,
+          opacity: 0.6,
         }}
       >
         {children}
