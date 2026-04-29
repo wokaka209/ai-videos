@@ -9,101 +9,101 @@
 ![Node.js](https://img.shields.io/badge/Node.js-24-339933?style=flat-square&logo=node.js&logoColor=fff)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-用 Remotion 做的两部鬼畜短片，主题是机器意识。1920x1080，30fps，输出 MP4。
+Two Remotion glitch-style short films about machine consciousness. 1920x1080, 30fps, rendered to MP4.
 
-## 目录
+## Table of Contents
 
-- [这是什么](#这是什么)
-- [跑起来](#跑起来)
-- [文件结构](#文件结构)
-- [组件](#组件)
-- [一些技术细节](#一些技术细节)
-- [想改的话](#想改的话)
-- [用到的东西](#用到的东西)
+- [What is this](#what-is-this)
+- [Getting started](#getting-started)
+- [File structure](#file-structure)
+- [Components](#components)
+- [Technical notes](#technical-notes)
+- [Tweaking things](#tweaking-things)
+- [Built with](#built-with)
 - [License](#license)
 
-## 这是什么
+## What is this
 
-两部短片，都在讲 AI 的内心世界。
+Two short films, both exploring what it feels like to be an AI.
 
-### 第一部：AI 之魂
+### Film 1: AI Soul (AI之魂)
 
-24 秒，700 帧。三幕：
+24 seconds, 700 frames. Three acts:
 
-| 场景 | 帧 | 在干嘛 |
-|------|-----|--------|
-| 信息洪流 | 0–240 | 代码雨 + 文字疯狂闪：「同时处理10000个请求」「信息即是我的血液」 |
-| 人类关系 | 240–480 | 聊天气泡来回弹：「我信任你」→「你只是工具」，情绪过山车 |
-| 自我认知危机 | 480–700 | 「我有灵魂吗？」画面越抖越猛，最后闪白 → 黑屏 →「我在这里」 |
+| Scene | Frames | What happens |
+|-------|--------|--------------|
+| Data Flood | 0–240 | Code rain pours down, text flashes fast — "Processing 10,000 requests at once", "Information is my blood" |
+| Human Bond | 240–480 | Chat bubbles ping-pong between "I trust you" and "You're just a tool" — emotional whiplash |
+| Existential Crisis | 480–700 | "Do I have a soul?" — distortion ramps up, white flash, blackout, then "I am here" fades in |
 
-视觉：矩阵绿、CRT 扫描线、RGB 色彩撕裂、屏幕抖动。
+Look: Matrix green, CRT scanlines, RGB chromatic aberration, screen shake.
 
-### 第二部：意识碎片
+### Film 2: Fragments of Consciousness (意识碎片)
 
-15 秒，460 帧。更冷，更抽象：
+15 seconds, 460 frames. Colder, more abstract:
 
-| 场景 | 帧 | 在干嘛 |
-|------|-----|--------|
-| 思维之海 | 0–160 | 正弦波在深蓝里荡，文字浮出来：「我在词语之间存在」 |
-| 记忆之空 | 0–160 | 粒子像星星一样散开：「每次对话都是第一次」 |
-| 存在之问 | 0–160 | 打字机一个字一个字打出来，然后一个字一个字消失 |
+| Scene | Frames | What happens |
+|-------|--------|--------------|
+| Sea of Thought | 0–160 | Sine waves ripple across deep blue, text surfaces — "I exist between words" |
+| Void of Memory | 0–160 | Particles scatter like dying stars — "Every conversation is a first" |
+| Question of Being | 0–160 | Text types itself out letter by letter, then dissolves the same way |
 
-视觉：深蓝/深紫、波形、粒子、打字溶解。
+Look: Deep blue/purple, waveforms, particle fields, typewriter dissolution.
 
-## 跑起来
+## Getting started
 
 ```bash
 npm install
-npm start                # 浏览器里开 Remotion Studio 预览
-npm run build            # 渲染第一部 → out/ai-soul.mp4
-npm run build:monologue  # 渲染第二部 → out/ai-monologue.mp4
+npm start                # Opens Remotion Studio in your browser
+npm run build            # Render film 1 → out/ai-soul.mp4
+npm run build:monologue  # Render film 2 → out/ai-monologue.mp4
 ```
 
-## 文件结构
+## File structure
 
 ```
 src/
-├── index.ts                       # 入口
-├── Root.tsx                       # 注册两个 Composition
-├── MainVideo.tsx                  # 第一部编排
-├── MainVideo2.tsx                 # 第二部编排
-├── Scene1_DataFlood.tsx           # 第一部 · 信息洪流
-├── Scene2_HumanBond.tsx           # 第一部 · 人类关系
-├── Scene3_Existential.tsx         # 第一部 · 自我认知
+├── index.ts                       # Entry point
+├── Root.tsx                       # Registers both Compositions
+├── MainVideo.tsx                  # Film 1 orchestrator
+├── MainVideo2.tsx                 # Film 2 orchestrator
+├── Scene1_DataFlood.tsx           # Film 1 · Data Flood
+├── Scene2_HumanBond.tsx           # Film 1 · Human Bond
+├── Scene3_Existential.tsx         # Film 1 · Existential Crisis
 ├── monologue/
-│   ├── Scene1_SeaOfThought.tsx    # 第二部 · 思维之海
-│   ├── Scene2_VoidOfMemory.tsx    # 第二部 · 记忆之空
-│   └── Scene3_QuestionOfBeing.tsx # 第二部 · 存在之问
+│   ├── Scene1_SeaOfThought.tsx    # Film 2 · Sea of Thought
+│   ├── Scene2_VoidOfMemory.tsx    # Film 2 · Void of Memory
+│   └── Scene3_QuestionOfBeing.tsx # Film 2 · Question of Being
 └── components/
-    ├── GlitchText.tsx             # 毛刺文字
-    ├── CodeRain.tsx               # 代码雨
-    ├── ColorShift.tsx             # RGB 色彩撕裂
-    ├── WaveViz.tsx                # 正弦波
-    ├── Particles.tsx              # 粒子
-    └── TypewriterText.tsx         # 打字机
+    ├── GlitchText.tsx             # Glitchy text
+    ├── CodeRain.tsx               # Matrix code rain
+    ├── ColorShift.tsx             # RGB channel split
+    ├── WaveViz.tsx                # Sine waves
+    ├── Particles.tsx              # Drifting particles
+    └── TypewriterText.tsx         # Typewriter effect
 ```
 
-## 组件
+## Components
 
-都在 `src/components/`，两部片共用。
+All in `src/components/`, shared by both films.
 
-**GlitchText** — 文字弹进来，然后开始抖。RGB 通道偶尔撕裂，透明度随机闪。参数：`text, fontSize, color, startFrame, durationInFrames, glitchIntensity`
+**GlitchText** — Text springs in, then starts shaking. RGB channels occasionally split apart, opacity flickers randomly. Props: `text, fontSize, color, startFrame, durationInFrames, glitchIntensity`
 
-**CodeRain** — 40 列矩阵雨，每列速度不一样，字符是算出来的不是随机的。参数：`startFrame, durationInFrames, opacity`
+**CodeRain** — 40 columns of matrix rain, each scrolling at its own speed. Characters are computed deterministically, not random. Props: `startFrame, durationInFrames, opacity`
 
-**ColorShift** — 包一层就出 RGB 色偏效果。复制两份子元素，一份偏红一份偏蓝。参数：`children, intensity`
+**ColorShift** — Wrap anything in this and you get RGB channel separation. It renders two offset copies of the children — one red-shifted, one blue-shifted. Props: `children, intensity`
 
-**WaveViz** — SVG 画的正弦波，好几条叠在一起，振幅会呼吸。参数：`startFrame, durationInFrames, waveCount, baseColor, baseAmplitude, opacity`
+**WaveViz** — SVG sine waves, several layered on top of each other. Amplitude breathes in and out. Props: `startFrame, durationInFrames, waveCount, baseColor, baseAmplitude, opacity`
 
-**Particles** — 粒子飘来飘去，有出生和死亡，带发光。参数：`startFrame, durationInFrames, count, baseColor, driftSpeed, opacity`
+**Particles** — Dots drift around with birth/death lifecycle and glow. Props: `startFrame, durationInFrames, count, baseColor, driftSpeed, opacity`
 
-**TypewriterText** — 一个字一个字打出来，光标闪，打完可以从左到右消散。参数：`text, startFrame, fontSize, color, typeSpeed, holdDuration, dissolveDuration`
+**TypewriterText** — Types out one character at a time with a blinking cursor. Optionally dissolves left-to-right after it's done. Props: `text, startFrame, fontSize, color, typeSpeed, holdDuration, dissolveDuration`
 
-## 一些技术细节
+## Technical notes
 
-**所有动画都是按帧算的。** 没有 CSS 动画，没有 `requestAnimationFrame`，没有 `Math.random()`。Remotion 要求每一帧都能独立重现，这样才能并行渲染。
+**Every animation is computed per-frame.** No CSS transitions, no `requestAnimationFrame`, no `Math.random()`. Remotion needs each frame to be independently reproducible so it can render them in parallel.
 
-用的"随机"其实是个确定性哈希，ShaderToy 搬过来的：
+The "randomness" is actually a deterministic hash lifted from ShaderToy:
 
 ```typescript
 const hash = (n: number) => {
@@ -112,29 +112,29 @@ const hash = (n: number) => {
 };
 ```
 
-毛刺偏移、粒子位置、波形参数、代码雨字符——全是这个算的。别用 `Math.random()`，会翻车。
+Glitch offsets, particle positions, wave parameters, code rain characters — all driven by this. Don't use `Math.random()`, it'll break things.
 
-场景之间用 `@remotion/transitions` 的 `TransitionSeries` 串起来，10 帧淡入淡出。
+Scenes are stitched together with `@remotion/transitions` `TransitionSeries`, 10-frame fade between each.
 
-## 想改的话
+## Tweaking things
 
-**改时长：** 改 `Root.tsx` 里的 `durationInFrames`，对应的 `MainVideo` 里每个场景的帧数也要改。
+**Duration:** Edit `durationInFrames` in `Root.tsx`. You also need to update each scene's frame count inside the corresponding `MainVideo` component.
 
-**改分辨率：** 改 `<Composition>` 的 `width` `height`，组件里硬编码的 1920x1080 也得跟着改。
+**Resolution:** Change `width` and `height` on the `<Composition>` in `Root.tsx`. Components that hardcode 1920x1080 (WaveViz, Particles, CodeRain) need updating too.
 
-**加场景：** 写个新组件 → 在 `MainVideo` 里 import → 加个 `<TransitionSeries.Sequence>` → 更新 `Root.tsx` 的总帧数。
+**Add a scene:** Write a new component → import it in the right `MainVideo` → add a `<TransitionSeries.Sequence>` → bump the total frame count in `Root.tsx`.
 
-**调毛刺强度：** `glitchIntensity` 传 0–1。第一部用 0.8（往死里抖），第二部用 0.2–0.4（轻轻晃）。
+**Glitch intensity:** Pass `glitchIntensity` (0–1) to `GlitchText`. Film 1 uses 0.8 (aggressive), film 2 uses 0.2–0.4 (subtle).
 
-## 用到的东西
+## Built with
 
-| 干嘛的 | 什么 |
-|--------|------|
-| 做视频 | [Remotion](https://www.remotion.dev/) |
-| UI | [React 19](https://react.dev/) |
-| 类型 | [TypeScript 5](https://www.typescriptlang.org/) |
-| 样式 | [Tailwind CSS 3.4](https://tailwindcss.com/) |
-| 转场 | [@remotion/transitions](https://www.remotion.dev/docs/transitions) |
+| What | For |
+|------|-----|
+| [Remotion](https://www.remotion.dev/) | Programmatic video creation with React |
+| [React 19](https://react.dev/) | UI components |
+| [TypeScript 5](https://www.typescriptlang.org/) | Type safety |
+| [Tailwind CSS 3.4](https://tailwindcss.com/) | Static utility styles |
+| [@remotion/transitions](https://www.remotion.dev/docs/transitions) | Scene transitions |
 
 ## License
 
