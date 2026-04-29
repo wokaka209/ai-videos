@@ -4,7 +4,8 @@
   "description": "AI之魂 - Glitch video about AI feelings",
   "scripts": {
     "start": "remotion studio",
-    "build": "remotion render AISoul out/ai-soul.mp4"
+    "build": "remotion render AISoul out/ai-soul.mp4",
+    "build:monologue": "remotion render AIMonologue out/ai-monologue.mp4"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.0",
